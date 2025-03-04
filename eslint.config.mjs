@@ -1,6 +1,8 @@
 import js from '@eslint/js';
 import prettier from 'eslint-plugin-prettier';
 import globals from 'globals';
+import typescriptParser from '@typescript-eslint/parser';
+import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 export default [
   js.configs.recommended,
@@ -8,6 +10,7 @@ export default [
   {
     files: ['**/*.ts'],
     languageOptions: {
+      parser: typescriptParser,
       parserOptions: {
         project: true,
       },
@@ -17,6 +20,7 @@ export default [
     },
     plugins: {
       prettier,
+      '@typescript-eslint': typescriptPlugin,
     },
     rules: {
       ...prettier.configs.recommended.rules,
