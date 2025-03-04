@@ -10,4 +10,5 @@ export const config = {
     (() => {
       throw new Error('MONGODB_URI is required');
     })(),
+  defaultPasssword: process.env.DEFAULT_PASSWORD,
 };
