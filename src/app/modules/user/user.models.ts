@@ -1,5 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { Schema, model } from 'mongoose';
 import { IUser } from './user.interface';
+import { config } from '../../config';
+import bcrypt from 'bcrypt';
 
 const userSchema = new Schema<IUser>(
   {
@@ -21,6 +24,18 @@ const userSchema = new Schema<IUser>(
   },
   { timestamps: true },
 );
+
+userSchema.pre<IUser>('save', async function (next) {
+  const saltRounds = Number(config.saltRounds);
+  this.password = await bcrypt.hash(this.password, saltRounds);
+
+  next();
+});
+
+userSchema.post<IUser>('save', function (doc, next) {
+  doc.password = undefined;
+  next();
+});
 
 const User = model<IUser>('User', userSchema);
 

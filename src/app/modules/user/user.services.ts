@@ -14,6 +14,10 @@ const createStudentInToDb = async ({
   student: IStudent;
 }) => {
   try {
+    if (await Student.isUserExist(student.email)) {
+      throw new Error('Student already exists');
+    }
+
     // Generate user ID
     const userId = uuid4();
 
@@ -28,6 +32,7 @@ const createStudentInToDb = async ({
     };
 
     const userData = await User.create(user);
+
     if (!userData || !userData._id) {
       throw new Error('User creation failed: userId is missing');
     }

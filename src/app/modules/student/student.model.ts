@@ -1,5 +1,10 @@
 import { Schema, model } from 'mongoose';
-import { IAddress, IGuardianContact, IStudent } from './student.interface';
+import {
+  IAddress,
+  IGuardianContact,
+  IStudent,
+  StudentModel,
+} from './student.interface';
 
 export const guardianContactSchema = new Schema<IGuardianContact>({
   name: { type: String, required: true },
@@ -37,4 +42,11 @@ const StudentSchema = new Schema<IStudent>(
   { timestamps: true },
 );
 
-export const Student = model<IStudent>('Student', StudentSchema);
+StudentSchema.statics.isUserExist = async function (
+  userEmail: string,
+): Promise<IStudent | null> {
+  const student = await this.findOne({ email: userEmail });
+  return student;
+};
+
+export const Student = model<IStudent, StudentModel>('Student', StudentSchema);
