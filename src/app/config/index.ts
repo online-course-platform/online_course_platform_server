@@ -11,5 +11,8 @@ export const config = {
       throw new Error('MONGODB_URI is required');
     })(),
   defaultPasssword: process.env.DEFAULT_PASSWORD,
-  saltRounds: process.env.SAlTROUNDS,
+  saltRounds: process.env.SALT_ROUNDS,
+  // cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  // api_key: process.env.CLOUDINARY_API_KEY,
+  // api_secret: process.env.CLOUDINARY_API_SECRET,
 };
