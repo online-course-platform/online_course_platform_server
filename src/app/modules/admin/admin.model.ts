@@ -29,17 +29,11 @@ const CreateAdminSchema = new Schema<IAdmin, AdminModel>(
 );
 
 CreateAdminSchema.statics.isUserExist = async function (
-  userEmail: string,
+  email: string,
   session?: ClientSession,
 ): Promise<IAdmin | null> {
-  const admin = await this.findOne({ email: userEmail }).session(
-    session || null,
-  );
+  const admin = await this.findOne({ email }).session(session || null);
   return admin;
 };
 
-const CreateAdmin = model<IAdmin, AdminModel>('Admin', CreateAdminSchema);
-
-export const Admin = {
-  CreateAdmin,
-};
+export const Admin = model<IAdmin, AdminModel>('Admin', CreateAdminSchema);

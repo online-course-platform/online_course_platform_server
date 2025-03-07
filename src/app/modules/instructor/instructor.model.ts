@@ -10,7 +10,7 @@ const CreateInstructorSchema = new Schema<IInstructor, InstructorModel>({
   },
   name: { type: String, required: true },
   gender: { type: String, required: true },
-  dateOfBirth: { type: Date, required: true },
+  dateOfBirth: { type: Date, optional: true },
   email: { type: String, required: true, unique: true },
   contactNo: { type: String, required: true },
   profileImage: { type: String, optional: true },
@@ -31,11 +31,7 @@ CreateInstructorSchema.statics.isUserExist = async function (
   return instructor;
 };
 
-const CreateInstructor = model<IInstructor, InstructorModel>(
+export const Instructor = model<IInstructor, InstructorModel>(
   'Instructor',
   CreateInstructorSchema,
 );
-
-export const Instructor = {
-  CreateInstructor,
-};
