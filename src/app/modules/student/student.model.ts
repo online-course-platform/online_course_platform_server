@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { ClientSession, Schema, model } from 'mongoose';
 import {
   IAddress,
   IGuardianContact,
@@ -44,8 +44,11 @@ const StudentSchema = new Schema<IStudent>(
 
 StudentSchema.statics.isUserExist = async function (
   userEmail: string,
+  session: ClientSession,
 ): Promise<IStudent | null> {
-  const student = await this.findOne({ email: userEmail });
+  const student = await this.findOne({ email: userEmail }).session(
+    session || null,
+  );
   return student;
 };
 

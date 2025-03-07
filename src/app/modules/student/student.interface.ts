@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Model, Types } from 'mongoose';
+import { ClientSession, Model, Types } from 'mongoose';
 
 export interface IGuardianContact {
   name: string;
@@ -34,5 +34,8 @@ export interface IStudent {
 }
 
 export interface StudentModel extends Model<IStudent> {
-  isUserExist(userEmail: string): Promise<IStudent | null>;
+  isUserExist(
+    userEmail: string,
+    session?: ClientSession,
+  ): Promise<IStudent | null>;
 }

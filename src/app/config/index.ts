@@ -12,6 +12,7 @@ export const config = {
     })(),
   defaultPasssword: process.env.DEFAULT_PASSWORD,
   saltRounds: process.env.SALT_ROUNDS,
+  envirnment: process.env.ENVIRNMENT,
   // cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   // api_key: process.env.CLOUDINARY_API_KEY,
   // api_secret: process.env.CLOUDINARY_API_SECRET,
