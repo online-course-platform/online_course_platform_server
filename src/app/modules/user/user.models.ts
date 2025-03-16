@@ -16,7 +16,7 @@ const userSchema = new Schema<IUser>(
     },
     status: {
       type: String,
-      enum: ['active', 'inactive'],
+      enum: ['active', 'inactive',"blocked"],
       required: true,
       default: 'active',
     },

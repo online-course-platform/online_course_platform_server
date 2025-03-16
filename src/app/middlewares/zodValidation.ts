@@ -22,24 +22,21 @@
 
 // export default validateSchema;
 
-import { Request, Response, NextFunction, RequestHandler } from 'express';
-import { ZodSchema, ZodError } from 'zod';
 
-const validateSchema = (schema: ZodSchema): RequestHandler => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    try {
-      schema.parse(req.body);
-      next();
-    } catch (error) {
-      if (error instanceof ZodError) {
-        res.status(400).json({
-          message: 'Validation error',
-          errors: error.errors,
-        });
-      }
-      next(error);
-    }
-  };
-};
+import { NextFunction, Request, Response } from 'express'
+import { AnyZodObject } from 'zod'
+import catchAsync from '../utils/catchAsync'
 
-export default validateSchema;
+
+const validateSchema = (schema: AnyZodObject) => {
+  return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const parseData = await schema.parseAsync({
+      body: req.body,
+      cookies: req.cookies
+    })
+    req.body = parseData.body;
+    next()
+  })
+}
+
+export default validateSchema

@@ -4,10 +4,11 @@ import catchAsync from '../../utils/catchAsync';
 import { CourseServices } from './course.service';
 
 
-// #TODO ..auth gurd hoile payload a created by bosate hbe createCourse a
+// #TODO ..auth gurd hoile payload a createdBy bosate hbe createCourse a
 
 const createCourse = catchAsync(async (req, res) => {
   const payload = req.body;
+  payload.createdBy = "67d6689f8e9349f3bdf01906";
   const result = await CourseServices.createCourse(payload);
   return sendCreated(res, result, 'Course created successfully');
 });

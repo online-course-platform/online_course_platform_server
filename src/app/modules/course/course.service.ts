@@ -1,9 +1,11 @@
 
+import mongoose from 'mongoose';
 import { sendImageToCloudinary } from '../../utils/sendImageToCloudinary';
 import { TCourse, TCourseContent, TCourseMilestone, TCourseModule } from './course.interface';
 import { Course, CourseContent, CourseMilestone, CourseModule } from './course.model';
+import { AppError } from '../../utils/appError';
 
-const createCourse = async (payload:{payload:TCourse} ) => {
+const createCourse = async (payload:TCourse ) => {
   const result = await Course.create(payload);
   return result
 };
@@ -11,56 +13,55 @@ const createCourse = async (payload:{payload:TCourse} ) => {
 
 
 
-// const createCourseMilestone = async (payload: TCourseMilestone) => {
-//   const session = await mongoose.startSession();
-//   session.startTransaction();
+const createCourseMilestone = async (payload: TCourseMilestone) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
 
-//   try {
+  try {
+    const [createMilestone] = await CourseMilestone.create([{ ...payload }], { session });
 
-//     const [createMilestone] = await CourseMilestone.create(
-//       [payload],
-//       { session },
-//     );
+    if (!createMilestone?._id) {
+      throw new AppError('Course milestone creation failed!', 500);
+    }
 
-//     if (!createMilestone?._id) {
-//       throw new AppError('Course milestone creation failed!', 500);
-//     }
+    const updateCourse = await Course.findByIdAndUpdate(
+      payload.courseId,
+      { $push: { milestones: createMilestone._id } }, 
+      { session, new: true } 
+    );
 
-//     const updateCourse = await Course.findByIdAndUpdate(
-//       payload.courseId,
-//       { $push: { milestones: createMilestone[0]._id } },
-//       { session }
-//     );
+    if (!updateCourse) {
+      throw new AppError('Course update failed!', 500);
+    }
 
-//     await session.commitTransaction();
+    await session.commitTransaction();
+    return createMilestone;
 
-//     return updateCourse;
-//     // eslint-disable-next-line no-unused-vars
-//   } catch (error: any) {
-//     await session.abortTransaction();
-//     throw new AppError('Course milestone creation failed!555', 500);
+  // eslint-disable-next-line no-unused-vars
+  } catch (error: any) {
+    await session.abortTransaction();
+    throw new AppError('Course milestone creation failed!', 500);
 
-//   } finally {
-//     session.endSession();
-//     // Verification Point 4: Check session state
-//   }
-// }
-
-
-
-
-
-
-
-
-
-const createCourseMilestone = async (payload:{payload:TCourseMilestone} ) => {
-  const result = await CourseMilestone.create(payload);
-  return result
+  } finally {
+    session.endSession();
+  }
 };
 
 
-const createCourseModule = async (payload:{payload:TCourseModule} ) => {
+
+
+
+
+
+
+
+// const createCourseMilestone = async (payload:TCourseMilestone ) => {
+//   const result = await CourseMilestone.create(payload);
+//   return result
+// };
+
+
+const createCourseModule = async (payload:TCourseModule ) => {
   const result = await CourseModule.create(payload);
   return result
 };
