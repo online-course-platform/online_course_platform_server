@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { userService } from './user.services';
 import catchAsync from '../../utils/catchAsync';
 import { sendCreated } from '../../utils/apiResponse';
-
+// check
 const createStudent = catchAsync(async (req, res) => {
   const { password, student } = req.body.body;
   const result = await userService.createStudentInToDb({ password, student });

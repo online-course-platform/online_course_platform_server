@@ -2,9 +2,9 @@
 import { Request, Response, NextFunction } from 'express';
 
 const catchAsync = <T = any>(
-  fn: (req: Request, res: Response, next: NextFunction) => Promise<T>,
+  fn: (req: Request & {user:{id:string,role:string}}, res: Response, next: NextFunction) => Promise<T>,
 ) => {
-  return (req: Request, res: Response, next: NextFunction) => {
+  return (req: Request& {user:{id:string,role:string}}, res: Response, next: NextFunction) => {
     Promise.resolve(fn(req, res, next)).catch(next);
   };
 };

@@ -1,0 +1,16 @@
+0000000000000000000000000000000000000000 beacd1f482f2459e0fbb9e1a0072aca31e647f52 oliullah05 <mdolihasan@gmail.com> 1741776657 +0600	clone: from https://github.com/dmmonir2003/OnlineCoursePlatform.git
+beacd1f482f2459e0fbb9e1a0072aca31e647f52 beacd1f482f2459e0fbb9e1a0072aca31e647f52 oliullah05 <mdolihasan@gmail.com> 1741788160 +0600	checkout: moving from main to oliullah
+beacd1f482f2459e0fbb9e1a0072aca31e647f52 1d07a4c70dfe1421a73605b47afcdfca4f885317 oliullah05 <mdolihasan@gmail.com> 1741788186 +0600	pull origin development: Fast-forward
+1d07a4c70dfe1421a73605b47afcdfca4f885317 e9d090c8650f5c4131e7dac46f8f604649140551 oliullah05 <mdolihasan@gmail.com> 1741981979 +0600	pull origin development: Fast-forward
+e9d090c8650f5c4131e7dac46f8f604649140551 7bb4e2dfbe2339ee8c83b1ca1bb24442fd934d62 oliullah05 <mdolihasan@gmail.com> 1742017775 +0600	commit: feat: course model and interface done
+7bb4e2dfbe2339ee8c83b1ca1bb24442fd934d62 ca8be2c7b2a648aef808d3d87df5868eff532ff1 oliullah05 <mdolihasan@gmail.com> 1742019051 +0600	commit: refactore: course interface and module refactore
+ca8be2c7b2a648aef808d3d87df5868eff532ff1 426a1de0983579394a1a0abf9ffce49afaf9afa9 oliullah05 <mdolihasan@gmail.com> 1742026597 +0600	commit: refactore: course model refactore and added module milestone system
+426a1de0983579394a1a0abf9ffce49afaf9afa9 76e4e707abf6ffab33855404b549dafc3dd5cd0b oliullah05 <mdolihasan@gmail.com> 1742027997 +0600	commit: feat: course validations schema done
+76e4e707abf6ffab33855404b549dafc3dd5cd0b 01e38f11c415b83c776db037bf0370364082fb3c oliullah05 <mdolihasan@gmail.com> 1742030046 +0600	commit: feat: course created successful
+01e38f11c415b83c776db037bf0370364082fb3c 0f47e8dc8fdae574ba881a5c2285c28e79e16d54 oliullah05 <mdolihasan@gmail.com> 1742030920 +0600	commit: feat: course milestone and module created
+0f47e8dc8fdae574ba881a5c2285c28e79e16d54 8f37af1abc0808966e8725205eda817bd77b0393 oliullah05 <mdolihasan@gmail.com> 1742031807 +0600	commit: lib: clodinary setup
+8f37af1abc0808966e8725205eda817bd77b0393 4c81a859fba882af3cd3444e37ae002fc34ef14d oliullah05 <mdolihasan@gmail.com> 1742033783 +0600	commit: feat: course created done with file upload
+4c81a859fba882af3cd3444e37ae002fc34ef14d 4c81a859fba882af3cd3444e37ae002fc34ef14d oliullah05 <mdolihasan@gmail.com> 1742046343 +0600	reset: moving to HEAD
+4c81a859fba882af3cd3444e37ae002fc34ef14d 4c81a859fba882af3cd3444e37ae002fc34ef14d oliullah05 <mdolihasan@gmail.com> 1742048603 +0600	reset: moving to HEAD
+4c81a859fba882af3cd3444e37ae002fc34ef14d 9cf774a5b5a432b72f6394868c5b19a97b9f31bc oliullah05 <mdolihasan@gmail.com> 1742048717 +0600	commit: update: update toi development
+9cf774a5b5a432b72f6394868c5b19a97b9f31bc b5cd5445d7e58eff1acabace5c6fa99ad22a1c95 oliullah05 <mdolihasan@gmail.com> 1742105414 +0600	commit: feat: auth gurd added and course milestone created done with Session
